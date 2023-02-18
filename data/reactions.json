@@ -1,0 +1,119 @@
+[
+    {
+        "from": "Alkane",
+        "to": "Halogenoalkane",
+        "reaction_type": "FreeRadicalSubstitution",
+        "reagents_conditions": "Gaseous X₂ in the presence of UV light",
+        "example": "CH₄ + Cl₂ → CH₃Cl + HCl",
+        "observation": "\n1. X = Cl: Yellow Cl₂ decolourises.\n2. X = Br: Reddish-brown Br₂ decolourises.",
+        "additional_information": "X-X bond undergoes homolytic fission to produce X* as free radical.\nThis reaction consists of 3 stages: Initiation, propagation, and termination.\nIf X₂ is in excess, the reaction will result in polysubstituted compounds."
+    },
+    {
+        "from": "Alkene",
+        "to": "Alkane",
+        "reaction_type": "Reduction",
+        "reagents_conditions": "H₂, Pt",
+        "example": "C₂H₄ + H₂ → C₂H₆",
+        "observation": null,
+        "additional_information": null
+    },
+    {
+        "from": "Alkene",
+        "to": "Halogenoalkane",
+        "reaction_type": "ElectrophilicAddition",
+        "reagents_conditions": "Gaseous HX, r.t.p",
+        "example": "C₂H₄ + HX → C₂H₅X",
+        "observation": null,
+        "additional_information": "H-X bond undergoes heterolytic fission to produce H⁺ to act as electrophile\nto attack the electron-rich C=C bond.\nNote that if the alkene is unsymmetrical, this reaction follow Markovnikov's rule, by\nwhich the major product is formed from the most stable carbocation."
+    },
+    {
+        "from": "Alkene",
+        "to": "Halogenoalkane",
+        "reaction_type": "ElectrophilicAddition",
+        "reagents_conditions": "X₂ in inert organic solvent (hexane)",
+        "example": "C₂H₄ + X₂ → C₂H₄X₂",
+        "observation": "When X = Br: Orange-red (organic solvent)/Orange (aq) Br₂ decolourises.",
+        "additional_information": "When X₂ molecule approaches the electron-rich C=C bond, the X atom closer to the\nC=C bond has an induced ƍ+ charge, while the other X atom has an induced ƍ- charge.\nHence, X-X bond undergoes heterolytic fission to produce X⁺ to act as electrophile\nto attack the electron-rich C=C bond."
+    },
+    {
+        "from": "Alkene",
+        "to": "Alcohol",
+        "reaction_type": "ElectrophilicAddition",
+        "reagents_conditions": "(1) Cold, concentrated H₂SO₄ and (2) Water, heat",
+        "example": "C₂H₄ + H₂O → C₂H₅OH",
+        "observation": null,
+        "additional_information": "The O-H bond undergoes heterolytic fission to give H+ to act as an electrophile\nto attack the electron-rich C=C bond."
+    },
+    {
+        "from": "Alkene",
+        "to": "Alcohol",
+        "reaction_type": "Oxidation",
+        "reagents_conditions": "Dilute alkaline/acidic KMnO₄, cold",
+        "example": "C₂H₄ + [O] + H₂O → C₂H₄(OH)₂",
+        "observation": "\n1. Alkaline medium: Purple KMnO₄ decolourises, brown precipitate of MnO₂ is formed.\n2. Acidic medium: Purple KMnO₄ decolourises.",
+        "additional_information": "This reaction is also called oxidative addition or mild oxidation."
+    },
+    {
+        "from": "Alkene",
+        "to": "Inorganic",
+        "reaction_type": "Oxidation",
+        "reagents_conditions": "KMnO₄ in dilute H₂SO₄, reflux",
+        "example": "C₂H₄ + 6[O] → 2CO₂ + 2H₂O",
+        "observation": "Purple KMnO₄ decolourises.",
+        "additional_information": "This reaction is called oxidative cleavage. The reaction here gives one of the possible products,\ncarbon dioxide and water. These products are formed if the C= atom has no alkyl group attached."
+    },
+    {
+        "from": "Alkene",
+        "to": "Carboxylic",
+        "reaction_type": "Oxidation",
+        "reagents_conditions": "KMnO₄ in dilute H₂SO₄, reflux",
+        "example": "CH₃CH=CHCH₃ + 4[O] → 2CH₃COOH",
+        "observation": "Purple KMnO₄ decolourises.",
+        "additional_information": "This reaction is called oxidative cleavage. The reaction here gives one of the possible products,\ncarboxylic acid. These products are formed if the C= atom has 1 alkyl group attached."
+    },
+    {
+        "from": "Alkene",
+        "to": "Ketone",
+        "reaction_type": "Oxidation",
+        "reagents_conditions": "KMnO₄ in dilute H₂SO₄, reflux",
+        "example": "(CH₃)₂CH=CH(CH₃)₂ + 2[O] → 2(CH₃)₂C=O",
+        "observation": "Purple KMnO₄ decolourises.",
+        "additional_information": "This reaction is called oxidative cleavage. The reaction here gives one of the possible products,\nketone. These products are formed if the C= atom has 2 alkyl groups attached."
+    },
+    {
+        "from": "Arene",
+        "to": "Arene",
+        "reaction_type": "ElectrophilicSubstitution",
+        "reagents_conditions": "X₂ in the absence of UV light, anhyrdrous AlX₃",
+        "example": "C₆H₆ + Cl₂ → C₆H₅Cl + HCl",
+        "observation": "\n1. X = Cl: Yellow Cl₂ decolourises.\n2. X = Br: Reddish-brown Br₂ decolourises.",
+        "additional_information": "One of the X atoms donates a pair of electrons to AlX₃, forming X⁺ to act as the electrophile: X₂ + AlX₃ → AlX₄⁻ + X⁺\n2 π electrons of the benzene are attracted towards the electrophile, forming a short-lived carbocation intermediate. The unstable carbocation loses\na H⁺ to restore the resonance structure of benzene, the H⁺ reacts with AlX₄⁻ to regenerate the catalyst and HX."
+    },
+    {
+        "from": "Arene",
+        "to": "Alkylbenzene",
+        "reaction_type": "ElectrophilicSubstitution",
+        "reagents_conditions": "RX and anhyrdrous AlX₃",
+        "example": "C₆H₆ + CH₃Cl → C₆H₅CH₃ + HCl",
+        "observation": null,
+        "additional_information": "The X atom of RX donates a pair of electrons to AlX₃, forming R⁺ to act as the electrophile: X₂ + AlX₃ → AlX₄⁻ + X⁺\n2 π electrons of the benzene are attracted towards the electrophile, forming a short-lived carbocation intermediate. The unstable carbocation loses\na H⁺ to restore the resonance structure of benzene, the H⁺ reacts with AlX₄⁻ to regenerate the catalyst and HX."
+    },
+    {
+        "from": "Arene",
+        "to": "Nitro",
+        "reaction_type": "ElectrophilicSubstitution",
+        "reagents_conditions": "Concentrated HNO₃, concentrated H₂SO₄, reflux",
+        "example": "C₆H₆ + HNO₃ → C₆H₅NO₂ + H₂O",
+        "observation": null,
+        "additional_information": "NO₂⁺ is generated via: HNO₃ + H₂SO₄ → NO₂⁺ + HSO₄⁻ + H₂O\n2 π electrons of the benzene are attracted towards the electrophile, forming a short-lived carbocation intermediate. The unstable carbocation loses\na H⁺ to restore the resonance structure of benzene, the H⁺ reacts with HSO₄⁻ to regenerate the catalyst."
+    },
+    {
+        "from": "Arene",
+        "to": "Alkane",
+        "reaction_type": "Reduction",
+        "reagents_conditions": "H₂, Pt",
+        "example": "C₆H₆ + 6H₂ → C₆H₁₂",
+        "observation": null,
+        "additional_information": null
+    }
+]
