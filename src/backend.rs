@@ -165,16 +165,38 @@ impl CompoundType {
     }
 }
 
-pub fn no_command() -> u8 {
-    eprintln!("No command was supplied!");
-    let msg = concat!(
-        "Here's something you can ask me:\n",
-        "1. Show the list of things that I know: orgchem list\n",
-        "2. Characteristic reactions of alkanes: orgchem show alkane\n",
-        "3. Nucleophilic substitution of halogenoalkanes: orgchem show halogenoalkane -r nsub\n",
-    );
-    println!("{}", msg);
-    1
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Reaction {
+    pub from: CompoundType,
+    pub to: CompoundType,
+    pub reaction_type: ReactionType,
+    pub reagents_conditions: String,
+    pub example: String,
+    pub observation: Option<String>,
+    pub additional_information: Option<String>,
+}
+
+impl Display for Reaction {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{} {}\n{} {}\n{} {}\n{} {}\n{} {}\n{} {}",
+            fmt::italic("Mechanism:"),
+            self.reaction_type,
+            fmt::italic("Product:"),
+            fmt::capitalise(&self.to.to_string()),
+            fmt::italic("Reagents/Conditions:"),
+            self.reagents_conditions,
+            fmt::italic("Example:"),
+            self.example,
+            fmt::italic("Observation:"),
+            self.observation.clone().unwrap_or("None".to_string()),
+            fmt::italic("Additional information:"),
+            self.additional_information
+                .clone()
+                .unwrap_or("None".to_string()),
+        )
+    }
 }
 
 #[derive(Debug)]
@@ -308,41 +330,19 @@ impl ListCommand {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub struct Reaction {
-    pub from: CompoundType,
-    pub to: CompoundType,
-    pub reaction_type: ReactionType,
-    pub reagents_conditions: String,
-    pub example: String,
-    pub observation: Option<String>,
-    pub additional_information: Option<String>,
-}
-
-impl Display for Reaction {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "{} {}\n{} {}\n{} {}\n{} {}\n{} {}\n{} {}",
-            fmt::italic("Mechanism:"),
-            self.reaction_type,
-            fmt::italic("Product:"),
-            fmt::capitalise(&self.to.to_string()),
-            fmt::italic("Reagents/Conditions:"),
-            self.reagents_conditions,
-            fmt::italic("Example:"),
-            self.example,
-            fmt::italic("Observation:"),
-            self.observation.clone().unwrap_or("None".to_string()),
-            fmt::italic("Additional information:"),
-            self.additional_information
-                .clone()
-                .unwrap_or("None".to_string()),
-        )
-    }
-}
-
 pub fn get_reaction_pairs() -> Vec<Reaction> {
     let data = include_str!("../data/reactions.json");
     serde_json::from_str(data).unwrap()
+}
+
+pub fn no_command() -> u8 {
+    eprintln!("No command was supplied!");
+    let msg = concat!(
+        "Here's something you can ask me:\n",
+        "1. Show the list of things that I know: orgchem list\n",
+        "2. Characteristic reactions of alkanes: orgchem show alkane\n",
+        "3. Nucleophilic substitution of halogenoalkanes: orgchem show halogenoalkane -r nsub\n",
+    );
+    println!("{}", msg);
+    1
 }
