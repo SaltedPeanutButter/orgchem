@@ -87,6 +87,7 @@ pub enum CompoundType {
     Aldehyde,
     Ketone,
     Nitro,
+    Nitrile,
 }
 
 impl Display for CompoundType {
@@ -102,7 +103,8 @@ impl Display for CompoundType {
             CompoundType::Halogenoalkane => write!(f, "halogenoalkane"),
             CompoundType::Aldehyde => write!(f, "aldehyde"),
             CompoundType::Ketone => write!(f, "ketone"),
-            CompoundType::Nitro => write!(f, "nitro")
+            CompoundType::Nitro => write!(f, "nitro"),
+            CompoundType::Nitrile => write!(f, "nitrile"),
         }
     }
 }
@@ -121,6 +123,7 @@ impl CompoundType {
             CompoundType::Aldehyde,
             CompoundType::Ketone,
             CompoundType::Nitro,
+            CompoundType::Nitrile,
         ]
     }
 
@@ -144,6 +147,7 @@ impl CompoundType {
             "aldehyde" => Some(CompoundType::Aldehyde),
             "ketone" => Some(CompoundType::Ketone),
             "nitro" => Some(CompoundType::Nitro),
+            "nitrile" => Some(CompoundType::Nitrile),
             _ => None,
         }
     }
