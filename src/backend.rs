@@ -185,31 +185,47 @@ impl ShowCommand {
         let compound = match CompoundType::from(&args.compound) {
             Some(c) => c,
             None => {
+                // If compound doesn't match, ask user to run 'orgchem list'
                 eprintln!("Unknown compound: {}", &args.compound);
                 println!("Run 'orgchem list' to see all available compounds and reactions.");
                 return 1;
             }
         };
 
-        // Get all valid reaction type for this particular compound
+        // Now that compound is matched, reaction type(s) will be matched next.
         let valid_reactions = match &args.reactions {
+            // Check if user passed in any reaction types
             Some(v) => {
+                // If they specified at least a reaction type, check if 'all' is one of them
                 // Check for 'all'
-                let is_all = v.into_iter().any(|x| x == "all");
-                if is_all {
-                    // Get all possible reactions
+                if v.into_iter().any(|x| x == "all") {
+                    // If 'all' was specified, get all the applicable reactions
                     compound.get_reactions()
                 } else {
+                    // Otherwise, match all the reaction types that were passed in and emit
+                    // error when it doesn't match.
+                    //
+                    // For all matched reaction types, check if the reaction type is supported,
+                    // i.e. the specified compound has the characteristic reaction type.
                     v.into_iter()
+                        // Convert all the short reaction types to enum variants
                         .map(|x| {
                             let reaction = ReactionType::from_short(x);
+
+                            // Emit error if doesn't match
                             if reaction.is_none() {
                                 eprintln!("Unknown reaction type '{}'", x);
                             }
                             reaction
                         })
+
+                        // Filter all the matched reaction types, i.e. filter out all the None value
                         .filter(|x| x.is_some())
+
+                        // Unwrap Option into ReactionType
                         .map(|x| x.unwrap())
+
+                        // Filter again, by checking against the list of applicable reactions
                         .filter(|x| {
                             if compound.get_reactions().contains(x) {
                                 true
@@ -221,11 +237,11 @@ impl ShowCommand {
                         .collect()
                 }
             }
-            // Show all reactions if none is supplied
+            // Show all applicable reactions if no reaction types is supplied
             None => compound.get_reactions(),
         };
 
-        // Check if there is any applicable reaction left
+        // Check if there is any applicable reaction left after filtering
         if valid_reactions.len() == 0 {
             return 1;
         }
@@ -233,10 +249,15 @@ impl ShowCommand {
         // Loop through each valid reaction type and look up all the relevant reactions
         let mut all_reactions: Vec<Reaction> = vec![];
         for reaction in valid_reactions {
+            // Get all reactions
             let mut reactions: Vec<Reaction> = get_reaction_pairs()
                 .into_iter()
+
+                // Filter by compound type and reaction type
                 .filter(|x| x.from == compound && x.reaction_type == reaction)
                 .collect();
+
+            // Add to the list of reactions
             all_reactions.append(&mut reactions);
         }
 
